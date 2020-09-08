@@ -8,9 +8,6 @@ const Game: React.FC = ():JSX.Element => {
     );
     const [stepNum, setStepNum] = useState(0);
 
-    console.log(4 % 5);
-    console.log(9 % 5);
-
     const handleClick = (i: number) => {
         const histories = history.slice(0, stepNum + 1);
         const lights = histories[histories.length - 1];
