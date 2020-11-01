@@ -1,4 +1,5 @@
 import React from 'react';
+import Panel from './Panel';
 
 type Props = {
     value: boolean;
@@ -6,22 +7,13 @@ type Props = {
 }
 
 const Square:React.FC<Props> = ({value, onClick}): JSX.Element => {
-
-    const light = value ? 'yellow' : 'gray';
-
-    const style = {
-        width: '30px',
-        height: '30px',
-        backgroundColor: `${light}`
-    }
     return (
-        <button 
-            style={style}
+        <Panel
+            isLight={value}
             className="square"
             onClick={() => onClick()}
         >
-            {value}
-        </button>
+        </Panel>
     );
 }
 
