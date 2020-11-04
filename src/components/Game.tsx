@@ -1,16 +1,33 @@
 import React, {useState} from 'react';
 import Board from './Board';
-
+import GameBoard from './GameBoard';
+import StepCounter from './StepCounter';
+import RestartButton from './RestartButton';
 
 const Game: React.FC = ():JSX.Element => {
     const [history, setHistory] = useState<boolean[][]>(
-        [Array(25).fill(true)]
+        [
+            [
+                false, false, true, false, false,
+                false, true, false, false, false,
+                true, false, true, false, true,
+                false, false, false, true, false,
+                false, false, true, false, false,
+
+            ]
+        ]
     );
     const [stepNum, setStepNum] = useState(0);
 
+    const restart = () => {
+        setStepNum(0);
+        setHistory([history[0]]);
+    }
+
     const handleClick = (i: number) => {
         const histories = history.slice(0, stepNum + 1);
-        const lights = histories[histories.length - 1];
+        const current = histories[histories.length - 1];
+        const lights = current.slice();
 
         lights[i] = !lights[i];
         if (i > 4) {
@@ -35,16 +52,20 @@ const Game: React.FC = ():JSX.Element => {
     const current = history[stepNum];
 
     return (
-        <div>
-            <div className="game">
-                <div className="game-board">
-                    <Board 
-                        lights={current}
-                        onClick={i => handleClick(i)}
-                    />
-                </div>
-            </div>
-        </div>
+        <GameBoard>
+            <Board 
+                lights={current}
+                onClick={i => handleClick(i)}
+            />
+            <StepCounter>
+                {stepNum}
+            </StepCounter>
+            <RestartButton
+                onClick={() => restart()}
+            >
+                RESTART
+            </RestartButton>
+        </GameBoard>
     );
 }
 

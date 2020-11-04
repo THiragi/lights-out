@@ -1,17 +1,12 @@
 import styled from 'styled-components';
+import Button from './atoms/Button';
 
-const Panel = styled.button<{isLight: boolean}>`
-  transition: 0.2s;
-  border-radius: 0.5em;
-  margin: 4px;
-  background-color: transparent;
-  pdding: 0;
-  border: none;
-  outline: none;
-  appearance: none;
+const Panel = styled(Button)<{isLight: boolean}>`
   width: 65px;
   height: 65px;
-  background-color: ${ ({isLight}) => isLight ? 'skyblue' : 'lightgray'}
+  border-radius: 0.5em;
+  transition-duration: 0.2s;
+  background-color: ${ ({isLight}) => isLight ? 'aliceblue' : '#498adf'}
 `;
 
 export default Panel;
