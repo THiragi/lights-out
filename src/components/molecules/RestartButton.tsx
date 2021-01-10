@@ -1,14 +1,14 @@
 import styled from 'styled-components';
-import Button from './atoms/Button';
+import Button from '../atoms/Button';
 
 const RestartButton = styled(Button)`
   cursor: pointer;
-  height: 65px;
-  width: 130px;
+  height: 120px;
+  width: 120px;
   color: ghostwhite;
   background-color: #498adf;
   font-size: 20px;
-  border-radius: 0.5em;
+  border-radius: 50%;
   transition-duration: 0.4s;
   &:hover {
     font-size: 24px;

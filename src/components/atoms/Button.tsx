@@ -7,7 +7,6 @@ const Button = styled.button`
   outline: none;
   padding: 0;
   margin: 4px;
-
 `;
 
 export default Button;

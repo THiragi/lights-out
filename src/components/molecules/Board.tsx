@@ -1,5 +1,5 @@
 import React from 'react';
-import Square from './Square';
+import Square from '../atoms/Square';
 
 type Props = {
     lights: boolean[];
@@ -24,7 +24,7 @@ const Board:React.FC<Props> = ({lights, onClick}): JSX.Element => {
     const sqrSet: number[][] = chunk(nums, 5);
     // map()で1行3列のマス目をレンダリングしていく
     return (
-        <div>
+        <>
             {sqrSet.map((v, i) => {
                 return (
                     <div key={i} className="board-row">
@@ -32,7 +32,7 @@ const Board:React.FC<Props> = ({lights, onClick}): JSX.Element => {
                     </div>
                 );
             })}
-        </div>
+        </>
     );
 };
 
