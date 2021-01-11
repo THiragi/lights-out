@@ -7,11 +7,11 @@ const RestartButton = styled(Button)`
   width: 120px;
   color: ghostwhite;
   background-color: #498adf;
-  font-size: 20px;
+  font-size: 18px;
   border-radius: 50%;
   transition-duration: 0.4s;
   &:hover {
-    font-size: 24px;
+    font-size: 20px;
     color: #498adf;
     background-color: ghostwhite;
   }

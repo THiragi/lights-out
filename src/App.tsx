@@ -13,7 +13,7 @@ const App = ():JSX.Element => {
         <WhiteSpan>B L O C K S </WhiteSpan>O U T
       </Header>
       <Main>
-        <Game />
+        <Game side={5} />
       </Main>
     </Container>
   );

@@ -2,11 +2,12 @@ import React from 'react';
 import Square from '../atoms/Square';
 
 type Props = {
-    lights: boolean[];
-    onClick: (i: number) => void;
+    side: number,
+    lights: boolean[],
+    onClick: (i: number) => void,
 }
 
-const Board:React.FC<Props> = ({lights, onClick}): JSX.Element => {
+const Board:React.FC<Props> = ({side, lights, onClick}): JSX.Element => {
 
     const renderSquare = (i: number) => {
         return (
@@ -19,9 +20,9 @@ const Board:React.FC<Props> = ({lights, onClick}): JSX.Element => {
     }
     
     // まず0~8の連番の配列を生成
-    const nums: number[] = [...Array(25)].map((_,i) => i);
+    const nums: number[] = [...Array(side * side)].map((_,i) => i);
     // 配列の中身を3要素ごとに分割
-    const sqrSet: number[][] = chunk(nums, 5);
+    const sqrSet: number[][] = chunk(nums, side);
     // map()で1行3列のマス目をレンダリングしていく
     return (
         <>
