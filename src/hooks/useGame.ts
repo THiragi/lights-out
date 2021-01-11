@@ -1,10 +1,13 @@
-import { useEffect, useState } from 'react';
-import gamesModule from '../modules/gamesModule';
+import { useState } from 'react';
 
-const useGame = (side: number):[boolean[], number, (i:number) => void, () => void, () => void] => {
-  const [inverse, randomPattern] = gamesModule(side);
+type ClickAction = (array: boolean[], i: number) => boolean[];
+type RandomPattern = (func: ClickAction) => boolean[];
+type Result =  [boolean[], number, (i:number) => void, () => void, () => void];
+type Props = (initPattern: boolean[], inverse: ClickAction, randomPattern: RandomPattern) => Result;
 
-  const [history, setHistory] = useState<boolean[][]>([Array(side*side).fill(false)]);
+const useGame: Props = (initPattern, inverse, randomPattern) => {
+
+  const [history, setHistory] = useState<boolean[][]>([initPattern]);
   const [stepNum, setStepNum] = useState<number>(0);
 
   const current = history[stepNum];
@@ -27,13 +30,8 @@ const useGame = (side: number):[boolean[], number, (i:number) => void, () => voi
 
   const newGame = () => {
     setStepNum(0);
-    setHistory([randomPattern()]);
+    setHistory([randomPattern(inverse)]);
   }; 
-
-  useEffect(()=>{
-    newGame();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
 
   return [current, stepNum, handleClick, restart, newGame];
 };

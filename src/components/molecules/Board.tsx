@@ -1,13 +1,15 @@
 import React from 'react';
 import Square from '../atoms/Square';
+import { SIDE_LEN } from '../../utils/const';
+
+const side = SIDE_LEN;
 
 type Props = {
-    side: number,
     lights: boolean[],
     onClick: (i: number) => void,
 }
 
-const Board:React.FC<Props> = ({side, lights, onClick}): JSX.Element => {
+const Board:React.FC<Props> = ({lights, onClick}): JSX.Element => {
 
     const renderSquare = (i: number) => {
         return (

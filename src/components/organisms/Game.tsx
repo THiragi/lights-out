@@ -3,19 +3,15 @@ import useGame from '../../hooks/useGame';
 import Board from '../molecules/Board';
 import StepCounter from '../molecules/StepCounter';
 import RestartButton from '../molecules/RestartButton';
+import { inverse, randomPattern, initPattern } from '../../modules/gamesModule';
 
-type Props = {
-  side: number,
-};
+const Game: React.FC = ():JSX.Element => {
 
-const Game: React.FC<Props> = ({side}):JSX.Element => {
-
-  const [current, stepNum, handleClick, restart, newGame] = useGame(side);
+  const [current, stepNum, handleClick, restart, newGame] = useGame(initPattern, inverse, randomPattern);
 
   return (
     <>
       <Board 
-        side={side}
         lights={current}
         onClick={i => handleClick(i)}
       />
