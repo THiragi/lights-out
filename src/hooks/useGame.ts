@@ -1,5 +1,4 @@
 import { useState } from 'react';
-// import gamesModule from '../modules/gamesModule';
 
 const useGame = (side: number):[boolean[], number, (i:number) => void, () => void, () => void] => {
   const max = side * side;
