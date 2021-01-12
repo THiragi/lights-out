@@ -1,10 +1,12 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import gamesModule from '../modules/gamesModule';
 
 const useGame = (side: number):[boolean[], number, (i:number) => void, () => void, () => void] => {
-  const [inverse, randomPattern] = gamesModule(side);
+  const [inverse, randomSteps, boardGenerator] = gamesModule(side);
 
-  const [history, setHistory] = useState<boolean[][]>([Array(side*side).fill(false)]);
+  const patternGenerator = boardGenerator(inverse);
+
+  const [history, setHistory] = useState<boolean[][]>([patternGenerator([12])]);
   const [stepNum, setStepNum] = useState<number>(0);
 
   const current = history[stepNum];
@@ -27,14 +29,9 @@ const useGame = (side: number):[boolean[], number, (i:number) => void, () => voi
 
   const newGame = () => {
     setStepNum(0);
-    setHistory([randomPattern(inverse)]);
+    setHistory([patternGenerator(randomSteps())]);
   }; 
 
-  // マウントされた時に、newGameを実行させる
-  useEffect(()=>{
-    newGame();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
 
   return [current, stepNum, handleClick, restart, newGame];
 };
