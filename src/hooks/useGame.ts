@@ -27,9 +27,10 @@ const useGame = (side: number):[boolean[], number, (i:number) => void, () => voi
 
   const newGame = () => {
     setStepNum(0);
-    setHistory([randomPattern()]);
+    setHistory([randomPattern(inverse)]);
   }; 
 
+  // マウントされた時に、newGameを実行させる
   useEffect(()=>{
     newGame();
     // eslint-disable-next-line react-hooks/exhaustive-deps
