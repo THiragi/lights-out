@@ -34,4 +34,3 @@ const gamesModule = (side: number): [ClickAction, () => number[], BoardGenerator
 };
 
 export default gamesModule;
-

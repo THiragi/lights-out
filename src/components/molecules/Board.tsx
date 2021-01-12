@@ -1,5 +1,11 @@
 import React from 'react';
 import Square from '../atoms/Square';
+import styled from 'styled-components';
+
+const BoardFrame = styled.div`
+    width: 365px;
+    height: 365px;
+`;
 
 type Props = {
     side: number,
@@ -25,7 +31,7 @@ const Board:React.FC<Props> = ({side, lights, onClick}): JSX.Element => {
     const sqrSet: number[][] = chunk(nums, side);
     // map()で1行3列のマス目をレンダリングしていく
     return (
-        <>
+        <BoardFrame>
             {sqrSet.map((v, i) => {
                 return (
                     <div key={i} className="board-row">
@@ -33,7 +39,7 @@ const Board:React.FC<Props> = ({side, lights, onClick}): JSX.Element => {
                     </div>
                 );
             })}
-        </>
+        </BoardFrame>
     );
 };
 

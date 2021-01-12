@@ -1,10 +1,10 @@
 import styled from 'styled-components';
-import Button from '../atoms/Button';
+import Button from './Button';
 
-const RestartButton = styled(Button)`
+const RoundButton = styled(Button)`
   cursor: pointer;
-  height: 120px;
-  width: 120px;
+  height: 134px;
+  width: 134px;
   color: ghostwhite;
   background-color: #498adf;
   font-size: 18px;
@@ -17,4 +17,4 @@ const RestartButton = styled(Button)`
   }
 `;
 
-export default RestartButton;
+export default RoundButton;

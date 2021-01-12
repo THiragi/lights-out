@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import gamesModule from '../modules/gamesModule';
 
-const useGame = (side: number):[boolean[], number, (i:number) => void, () => void, () => void] => {
+const useGame = (side: number):[boolean[], number, false | string, (i:number) => void, () => void, () => void] => {
   const [inverse, randomSteps, boardGenerator] = gamesModule(side);
 
   const patternGenerator = boardGenerator(inverse);
@@ -11,10 +11,13 @@ const useGame = (side: number):[boolean[], number, (i:number) => void, () => voi
 
   const current = history[stepNum];
 
+  const message = stepNum === side ? 'PLEASE RESTART' : !current.includes(true) && 'COMPLETE!';
+
   const handleClick = (i: number) => {
+    if (message) return;
     const histories = history.slice(0, stepNum + 1);
     const current = histories[histories.length - 1];
-    const lights =  inverse(current.slice(), i);
+    const lights =  inverse([...current], i);
 
     setHistory(histories.concat([
         lights,
@@ -23,6 +26,7 @@ const useGame = (side: number):[boolean[], number, (i:number) => void, () => voi
   };
 
   const restart = () => {
+    if (history.length === 1 && stepNum === 0) return;
     setStepNum(0);
     setHistory([history[0]]);
   }
@@ -32,8 +36,7 @@ const useGame = (side: number):[boolean[], number, (i:number) => void, () => voi
     setHistory([patternGenerator(randomSteps())]);
   }; 
 
-
-  return [current, stepNum, handleClick, restart, newGame];
+  return [current, stepNum, message, handleClick, restart, newGame];
 };
 
 export default useGame;
