@@ -12,8 +12,8 @@ const Header:React.FC<Props> = ({white, blue}) => {
   return (
     <OuterHeader>
       <InnerHeader>
-        {white && white.split("").map(s => <WhiteSpan>{s}</WhiteSpan>)}
-        {blue && blue.split("").map(s => <span>{s}</span>)}
+        {white && white.split("").map((v,i)=> <WhiteSpan key={i}>{v}</WhiteSpan>)}
+        {blue && blue.split("").map((v,i) => <span key={i}>{v}</span>)}
       </InnerHeader>
     </OuterHeader>
   );
