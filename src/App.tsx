@@ -1,17 +1,17 @@
 import React from 'react';
-import Header from './components/Header';
+import Header from './components/organisms/Header';
 import Container from './components/Container';
 import Main from './components/Main';
 import Game from './components/organisms/Game';
-import WhiteSpan from './components/atoms/WhiteSpan';
 
 
 const App = ():JSX.Element => {
   return (
     <Container>
-      <Header>
-        <WhiteSpan>B L O C K S </WhiteSpan>O U T
-      </Header>
+      <Header 
+        white={"BLOCKS"}
+        blue={"OUT"}
+      />
       <Main>
         <Game side={5} />
       </Main>

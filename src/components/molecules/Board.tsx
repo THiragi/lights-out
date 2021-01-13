@@ -1,5 +1,5 @@
 import React from 'react';
-import Square from '../atoms/Square';
+import Square from '../atoms/button/Square';
 import styled from 'styled-components';
 
 const BoardFrame = styled.div`

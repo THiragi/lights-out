@@ -7,15 +7,15 @@ const useGame = (side: number):[boolean[], number, false | string, (i:number) =>
   const patternGenerator = boardGenerator(inverse);
 
   const [history, setHistory] = useState<boolean[][]>([patternGenerator([12])]);
-  const [stepNum, setStepNum] = useState<number>(0);
+  const [stepCount, setStepNum] = useState<number>(0);
 
-  const current = history[stepNum];
+  const current = history[stepCount];
 
-  const message = stepNum === side ? 'PLEASE RESTART' : !current.includes(true) && 'COMPLETE!';
+  const message = !current.includes(true) && 'CLEAR!';
 
   const handleClick = (i: number) => {
     if (message) return;
-    const histories = history.slice(0, stepNum + 1);
+    const histories = history.slice(0, stepCount + 1);
     const current = histories[histories.length - 1];
     const lights =  inverse([...current], i);
 
@@ -26,7 +26,7 @@ const useGame = (side: number):[boolean[], number, false | string, (i:number) =>
   };
 
   const restart = () => {
-    if (history.length === 1 && stepNum === 0) return;
+    if (history.length === 1 && stepCount === 0) return;
     setStepNum(0);
     setHistory([history[0]]);
   }
@@ -36,7 +36,7 @@ const useGame = (side: number):[boolean[], number, false | string, (i:number) =>
     setHistory([patternGenerator(randomSteps())]);
   }; 
 
-  return [current, stepNum, message, handleClick, restart, newGame];
+  return [current, stepCount, message, handleClick, restart, newGame];
 };
 
 export default useGame;

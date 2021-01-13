@@ -1,49 +1,36 @@
 import React from 'react';
-import Display from '../atoms/Display';
-import RoundButton from '../atoms/RoundButton';
-import StepCounter from '../atoms/StepCounter';
+import NewGameButton from '../atoms/button/NewGameButton';
+import RestartButton from '../atoms/button/RestartButton';
 import styled from 'styled-components';
 
 
 const NavFrame = styled.div`
-  margin-left: 27px;
-  width: 308px;
-  height: 365px;
+  width: 235px;
+  height: 357px;
+  border-radius: 6px;
   display: flex;
   flex-direction: column;
-`;
-
-const ButtonBar = styled.div`
-  margin-top:auto;
-  display: flex;
-  justify-content: space-between;
+  justify-content:space-between;
+  margin: 4px;
 `;
 
 type Props = {
-  stepNum: number,
-  message: false | string,
+  stepCount: number,
+  message: string | false,
   restart: () => void,
   newGame: () => void,
 };
 
-const SideNav: React.FC<Props> = ({stepNum, message, restart, newGame}) => (
+const SideNav: React.FC<Props> = ({stepCount, message, restart, newGame}) => (
   <NavFrame>
-    <Display>
-      {message}
-    </Display>
-    <StepCounter>
-      step: {stepNum}
-    </StepCounter>
-    <ButtonBar>
-      <RoundButton
-        onClick={() => restart()}
-        >
-        RESTART
-      </RoundButton>
-      <RoundButton onClick={() => newGame()}>
+      <RestartButton 
+        stepCount={stepCount}
+        message={message}
+        onClick={restart}
+      />
+      <NewGameButton onClick={() => newGame()}>
         NEW GAME
-      </RoundButton>
-    </ButtonBar>
+      </NewGameButton>
   </NavFrame>
 );
 

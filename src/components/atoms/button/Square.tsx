@@ -5,7 +5,8 @@ import Button from './Button';
 const Panel = styled(Button)<{isLight: boolean}>`
   width: 65px;
   height: 65px;
-  border-radius: 0.5em;
+  margin: 4px;
+  border-radius: 6px;
   transition-duration: 0.2s;
   background-color: ${ ({isLight}) => isLight ? 'aliceblue' : '#498adf'};
 `;

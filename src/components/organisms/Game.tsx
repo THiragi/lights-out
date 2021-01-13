@@ -15,7 +15,7 @@ type Props = {
 
 const Game: React.FC<Props> = ({side}):JSX.Element => {
 
-  const [current, stepNum, message, handleClick, restart, newGame] = useGame(side);
+  const [current, stepCount, message, handleClick, restart, newGame] = useGame(side);
 
   return (
     <MainFrame>
@@ -25,7 +25,7 @@ const Game: React.FC<Props> = ({side}):JSX.Element => {
         onClick={i => handleClick(i)}
       />
       <SideNav
-       stepNum={stepNum}
+       stepCount={stepCount}
        message={message}
        restart={restart}
        newGame={newGame} 
