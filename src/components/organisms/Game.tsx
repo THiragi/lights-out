@@ -1,13 +1,7 @@
 import React from 'react';
 import useGame from '../../hooks/useGame';
 import Board from '../molecules/Board';
-import SideNav from '../molecules/SideNav';
-import styled from 'styled-components';
-
-const MainFrame = styled.div`
-  display: flex;
-`;
-
+import Navi from '../molecules/Navi';
 
 type Props = {
   side: number,
@@ -18,19 +12,19 @@ const Game: React.FC<Props> = ({side}):JSX.Element => {
   const [current, stepCount, message, handleClick, restart, newGame] = useGame(side);
 
   return (
-    <MainFrame>
+    <>
       <Board 
         side={side}
         lights={current}
         onClick={i => handleClick(i)}
       />
-      <SideNav
+      <Navi
        stepCount={stepCount}
        message={message}
        restart={restart}
        newGame={newGame} 
       />
-    </MainFrame>
+    </>
   );
 }
 

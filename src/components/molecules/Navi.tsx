@@ -5,13 +5,10 @@ import styled from 'styled-components';
 
 
 const NavFrame = styled.div`
-  width: 235px;
-  height: 357px;
-  border-radius: 6px;
+  width: 365px;
   display: flex;
-  flex-direction: column;
   justify-content:space-between;
-  margin: 4px;
+  margin-top: 40px;
 `;
 
 type Props = {
@@ -21,7 +18,7 @@ type Props = {
   newGame: () => void,
 };
 
-const SideNav: React.FC<Props> = ({stepCount, message, restart, newGame}) => (
+const Navi: React.FC<Props> = ({stepCount, message, restart, newGame}) => (
   <NavFrame>
       <RestartButton 
         stepCount={stepCount}
@@ -34,4 +31,4 @@ const SideNav: React.FC<Props> = ({stepCount, message, restart, newGame}) => (
   </NavFrame>
 );
 
-export default SideNav;
+export default Navi;

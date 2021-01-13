@@ -6,7 +6,7 @@ color: ghostwhite;
 background-color: #498adf;
 transition-duration: 0.4s;
 &:hover {
-  font-size: 26px;
+  font-size: 24px;
   color: #498adf;
   background-color: ghostwhite;
 }

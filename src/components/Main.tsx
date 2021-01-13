@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 const Main = styled.main`
-  width: 608px;
+  width: 365px;
   margin: 0 auto;
 `;
 

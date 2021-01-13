@@ -7,7 +7,7 @@ const RestartButton = styled(RoundButton)<{stepCount: number, message: string | 
   transition-duration: 0.4s;
   ${({stepCount}) => stepCount > 0 && `
     &:hover {
-      font-size: 26px;
+      font-size: 24px;
       color: #498adf;
       background-color: ghostwhite;
     }
@@ -15,7 +15,6 @@ const RestartButton = styled(RoundButton)<{stepCount: number, message: string | 
       content: "RESTART";
     }
   `}
-  ${({message}) => !message && "font-size: 36px;"}
   &:before {
     content: "${({message, stepCount}) => message || stepCount.toString(10)}" ;
   }
