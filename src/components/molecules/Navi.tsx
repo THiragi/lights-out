@@ -13,16 +13,16 @@ const NavFrame = styled.div`
 
 type Props = {
   stepCount: number,
-  message: string | false,
+  isComplete: boolean,
   restart: () => void,
   newGame: () => void,
 };
 
-const Navi: React.FC<Props> = ({stepCount, message, restart, newGame}) => (
+const Navi: React.FC<Props> = ({stepCount, isComplete, restart, newGame}) => (
   <NavFrame>
       <RestartButton 
         stepCount={stepCount}
-        message={message}
+        isComplete={isComplete}
         onClick={restart}
       />
       <NewGameButton onClick={() => newGame()}>

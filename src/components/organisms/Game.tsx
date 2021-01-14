@@ -9,7 +9,7 @@ type Props = {
 
 const Game: React.FC<Props> = ({side}):JSX.Element => {
 
-  const [current, stepCount, message, handleClick, restart, newGame] = useGame(side);
+  const [current, stepCount, isComplete, handleClick, restart, newGame] = useGame(side);
 
   return (
     <>
@@ -19,10 +19,10 @@ const Game: React.FC<Props> = ({side}):JSX.Element => {
         onClick={i => handleClick(i)}
       />
       <Navi
-       stepCount={stepCount}
-       message={message}
-       restart={restart}
-       newGame={newGame} 
+        stepCount={stepCount}
+        isComplete={isComplete}
+        restart={restart}
+        newGame={newGame} 
       />
     </>
   );

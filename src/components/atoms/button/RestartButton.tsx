@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import RoundButton from './RoundButton';
 
-const RestartButton = styled(RoundButton)<{stepCount: number, message: string | false}>`
+const RestartButton = styled(RoundButton)<{stepCount: number, isComplete: boolean}>`
   color: ghostwhite;
   background-color: #498adf;
   transition-duration: 0.4s;
@@ -16,7 +16,7 @@ const RestartButton = styled(RoundButton)<{stepCount: number, message: string | 
     }
   `}
   &:before {
-    content: "${({message, stepCount}) => message || stepCount.toString(10)}" ;
+    content: "${({isComplete, stepCount}) => isComplete ? `CLEAR!`: stepCount.toString(10)}" ;
   }
 `;
 

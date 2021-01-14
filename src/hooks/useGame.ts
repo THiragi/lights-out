@@ -1,20 +1,20 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import gamesModule from '../modules/gamesModule';
 
-const useGame = (side: number):[boolean[], number, false | string, (i:number) => void, () => void, () => void] => {
+const useGame = (side: number):[boolean[], number, boolean, (i:number) => void, () => void, () => void] => {
   const [inverse, randomSteps, boardGenerator] = gamesModule(side);
 
   const patternGenerator = boardGenerator(inverse);
 
-  const [history, setHistory] = useState<boolean[][]>([patternGenerator([12])]);
+  const [history, setHistory] = useState<boolean[][]>([[]]);
   const [stepCount, setStepNum] = useState<number>(0);
 
   const current = history[stepCount];
 
-  const message = !current.includes(true) && 'CLEAR!';
+  const isComplete = !current.includes(true);
 
   const handleClick = (i: number) => {
-    if (message) return;
+    if (isComplete) return;
     const histories = history.slice(0, stepCount + 1);
     const current = histories[histories.length - 1];
     const lights =  inverse([...current], i);
@@ -36,7 +36,12 @@ const useGame = (side: number):[boolean[], number, false | string, (i:number) =>
     setHistory([patternGenerator(randomSteps())]);
   }; 
 
-  return [current, stepCount, message, handleClick, restart, newGame];
+  useEffect(() => {
+    newGame()
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  },[]);
+
+  return [current, stepCount, isComplete, handleClick, restart, newGame];
 };
 
 export default useGame;
