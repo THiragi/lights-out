@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 const InnerHeader = styled.div`
   height: 40px;
-  width: 365px;
+  width: 357px;
   margin: 0 auto;
   color: #498adf;
   font-size: 32px;
