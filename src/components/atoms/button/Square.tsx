@@ -12,20 +12,19 @@ const Panel = styled(Button)<{isLight: boolean}>`
 `;
 
 type Props = {
-    value: boolean;
-    onClick: () => void;
-  }
+  value: boolean,
+  onClick: () => void,
+}
   
-  const Square:React.FC<Props> = ({value, onClick}): JSX.Element => {
-    return (
-        <Panel
-            isLight={value}
-            className="square"
-            onClick={() => onClick()}
-        >
-        </Panel>
-    );
-  }
+const Square:React.FC<Props> = ({value, onClick}): JSX.Element => {
+  return (
+    <Panel
+        isLight={value}
+        className="square"
+        onClick={() => onClick()}
+    />
+  );
+}
 
 
 export default Square;

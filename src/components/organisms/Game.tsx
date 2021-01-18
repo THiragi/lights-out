@@ -15,6 +15,7 @@ const Game: React.FC<Props> = ({side}):JSX.Element => {
     <>
       <Board 
         side={side}
+        isComplete={isComplete}
         lights={current}
         onClick={i => handleClick(i)}
       />
