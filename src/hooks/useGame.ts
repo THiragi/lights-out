@@ -16,8 +16,8 @@ const useGame = (side: number):[boolean[], number, boolean, (i:number) => void, 
   const handleClick = (i: number) => {
     if (isComplete) return;
     const histories = history.slice(0, stepCount + 1);
-    const current = histories[histories.length - 1];
-    const lights =  inverse([...current], i);
+    const latest = histories[histories.length - 1];
+    const lights = inverse([...latest], i);
 
     setHistory(histories.concat([
         lights,
