@@ -4,30 +4,29 @@ import Board from '../molecules/Board';
 import Navi from '../molecules/Navi';
 
 type Props = {
-  side: number,
+  side: number;
 };
 
-const Game: React.FC<Props> = ({side}):JSX.Element => {
-
-  const [current, stepCount, isComplete, handleClick, restart, newGame] = useGame(side);
+const Game: React.FC<Props> = ({ side }): JSX.Element => {
+  const [current, stepCount, handleClick, restart, newGame] = useGame(side);
+  const isComplete = !current.includes(true);
 
   return (
     <>
-      <Board 
+      <Board
         side={side}
         isComplete={isComplete}
         lights={current}
-        onClick={i => handleClick(i)}
+        onClick={(i) => handleClick(i)}
       />
       <Navi
         stepCount={stepCount}
         isComplete={isComplete}
         restart={restart}
-        newGame={newGame} 
+        newGame={newGame}
       />
     </>
   );
-}
+};
 
 export default Game;
-
